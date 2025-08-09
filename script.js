@@ -146,6 +146,13 @@ function getLearnerData(course, ag, submissions) {
       }
     });
 
+    // Calculate average
+    if (totalPossible > 0) {
+      learnerObj.avg = Math.round((totalEarned / totalPossible) * 1000) / 1000;
+    } else {
+      learnerObj.avg = 0;
+    }
+
     // Push to final results
     result.push(learnerObj);
   });
