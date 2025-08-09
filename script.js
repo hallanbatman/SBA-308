@@ -143,6 +143,21 @@ function getLearnerData(course, ag, submissions) {
     submissions.forEach(sub => {
       if (sub.learner_id === learnerId) {
         const assignment = getAssignmentInfo(sub.assignment_id);
+
+        try {// Error checks
+          if (!assignment) throw new Error("Assignment not found");
+          if (typeof assignment.points_possible !== "number") {
+            assignment.points_possible = Number(assignment.points_possible);
+          }
+          if (assignment.points_possible === 0) {
+            throw new Error("Invalid Input: points_possible is 0");
+          }
+
+      
+
+        } catch (error) {
+          console.log(`Error for learner ${learnerId}, assignment ${sub.assignment_id}: ${error.message}`);
+        }
       }
     });
 
