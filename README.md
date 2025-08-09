@@ -1,5 +1,52 @@
 # SBA 308: JavaScript Fundamentals
 
+## Inputs Given
+
+Used the given data input:
+- `CourseInfo;`
+- `AssignmentGroup;`
+- `LearnerSubmissions;`
+
+## Outputs Expected
+
+To output an object for each learner, and their submissions:
+- id, learner_id;
+- avg score (submission.score / points_possible);
+- each assingment:
+  - id, score.
+
+## Method | 4 Steps
+
+### Step 1 - Find  unique learners
+- Loop through `LearnerSubmissions` to build a list of unique learner IDs.
+
+### Step 2 - Get assignment information
+- Get assignment info;
+- Find out assignment status;
+
+### Step 3 - Check assignment status
+- Skip assignments not yet due.
+- Apply penalty to overdue assingments.
+
+### Step 4 - Calculate result
+- percentage: (earned score) / (points_possible), rounded to 3 decimals.
+- Average: (sum of earned points) / (sum of possible points) across all counted assignments. 
+
+## Data Validation
+- Check that the `course_id` in `AssignmentGroup` matches the id in `CourseInfo`.
+- Ensure `points_possible` is a valid number and not zero.
+- Convert string numbers to actual numbers when necessary.
+
+## Helper Functions
+- `getUniqueLearners()` – Get unique learner IDs.
+- `getAssignmentInfo()` – Get assignment info by ID.
+- `isAssignmentDue()` – Checks if assignment is due.
+- `lateAssignment()` – Appliy 10% late penalty when due. 
+
+<br><br>
+
+# Per Scholas | SBA | Original Problem 
+
 ## Objectives
 - Employ basic JavaScript syntax accurately.
 - Implement control flow structures such as conditionals and loops effectively.
