@@ -153,7 +153,29 @@ function getLearnerData(course, ag, submissions) {
             throw new Error("Invalid Input: points_possible is 0");
           }
 
-      
+          // Is assignment due?
+          if (!isAssignmentDue(assignment.due_at)) {
+            console.log(`Learner ID: ${learnerId}, Assignment ID: ${assignment.id}, has been skipped, not due yet `);
+            return; // skip this assignment
+          }
+
+          // Late Assignment penalty Applied
+          let score = lateAssignment(
+            sub.submission.score,
+            sub.submission.submitted_at,
+            assignment.due_at,
+            assignment.points_possible
+          );
+
+          // Calculate percent score
+          const percent = score / assignment.points_possible;
+
+          // Add assignment percent to learner object
+          learnerObj[assignment.id] = Math.round(percent * 1000) / 1000;
+
+          // Update totals for average
+          totalEarned += score;
+          totalPossible += assignment.points_possible;
 
         } catch (error) {
           console.log(`Error for learner ${learnerId}, assignment ${sub.assignment_id}: ${error.message}`);
