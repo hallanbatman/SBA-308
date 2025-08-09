@@ -135,7 +135,20 @@ function getLearnerData(course, ag, submissions) {
   // each assingment:
   //        id, score
 
-  
+  learners.forEach(learnerId => {
+    const learnerObj = { id: learnerId };
+    let totalEarned = 0;
+    let totalPossible = 0;
+
+    submissions.forEach(sub => {
+      if (sub.learner_id === learnerId) {
+        const assignment = getAssignmentInfo(sub.assignment_id);
+      }
+    });
+
+    // Push to final results
+    result.push(learnerObj);
+  });
 
   // ############################ ⬆️ WRITE CODE ABOVE ⬆️ #############################
 
