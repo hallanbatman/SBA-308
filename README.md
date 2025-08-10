@@ -43,7 +43,7 @@ To output an object for each learner, and their submissions:
 - `isAssignmentDue()` – Checks if assignment is due.
 - `lateAssignment()` – Appliy 10% late penalty when due. 
 
-<br><br>
+<br> <br>
 
 # Per Scholas | SBA | Original Problem 
 
